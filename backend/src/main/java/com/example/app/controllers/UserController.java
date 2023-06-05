@@ -36,7 +36,6 @@ public class UserController {
             User existingUser = optionalUser.get();
             existingUser.setName(user.getName());
             existingUser.setEmail(user.getEmail());
-            // Update other user properties as needed
             User updatedUser = userRepository.save(existingUser);
             return ResponseEntity.ok(updatedUser);
         } else {

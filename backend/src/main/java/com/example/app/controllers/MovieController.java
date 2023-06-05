@@ -2,10 +2,12 @@ package com.example.app.controllers;
 
 import com.example.app.models.Movie;
 import com.example.app.repositories.MovieRepository;
+import com.example.app.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -14,6 +16,8 @@ public class MovieController {
 
     @Autowired
     private MovieRepository movieRepository;
+    @Autowired
+    private MovieService movieService;
 
     @PostMapping
     public Movie createMovie(@RequestBody Movie movie) {
@@ -28,6 +32,12 @@ public class MovieController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping
+    public List<Movie> getAllMovies() {
+        List<Movie> movies = movieService.getAllMovies();
+        return movies;
     }
 
     @PutMapping("/{id}")
