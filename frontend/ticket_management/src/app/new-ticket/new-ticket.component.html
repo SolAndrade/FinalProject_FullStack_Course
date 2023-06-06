@@ -1,0 +1,21 @@
+<h2>Create New Ticket</h2>
+
+<div *ngIf="movie">
+  <h3>{{ movie.title }}</h3>
+  <p>Description: {{ movie.description }}</p>
+  <p>Genre: {{ movie.genre }}</p>
+  <p>Duration: {{ movie.duration }}</p>
+  <p>Rating: {{ movie.rating }}</p>
+  <p>Minimum Age: {{ movie.ageMin }}</p>
+  <p>Tickets: {{ movie.tickets }}</p>
+</div>
+
+<div>
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="ticket.user_name">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" [(ngModel)]="ticket.user_email">
+
+  <button (click)="postTicket()">Buy Ticket</button>
+</div>

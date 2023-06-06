@@ -1,0 +1,26 @@
+<h2>Movie Details</h2>
+
+<div class="header">
+    <h1>Welcome to Movie App</h1>
+    <div class="user-controls">
+      <button *ngIf="!loggedInUser" (click)="redirectToLogin()">Login</button>
+      <button *ngIf="!loggedInUser" (click)="redirectToRegister()">Register</button>
+      <button *ngIf="loggedInUser">Profile</button>
+    </div>
+</div>
+
+<div *ngIf="movie">
+  <h3>{{ movie.title }}</h3>
+  <p>Description: {{ movie.description }}</p>
+  <p>Genre: {{ movie.genre }}</p>
+  <p>Duration: {{ movie.duration }}</p>
+  <p>Rating: {{ movie.rating }}</p>
+  <p>Minimum Age: {{ movie.ageMin }}</p>
+  <p>Tickets: {{ movie.tickets }}</p>
+
+  <a [routerLink]="'/new-ticket/' + movie.id">Buy Ticket</a>
+</div>
+
+<div *ngIf="!movie">
+  <p>Loading movie details...</p>
+</div>

@@ -1,0 +1,26 @@
+<h2>Movie List</h2>
+
+<div class="header">
+  <h1>Welcome to Movie App</h1>
+  <div class="user-controls">
+    <button *ngIf="!loggedInUser" (click)="redirectToLogin()">Login</button>
+    <button *ngIf="!loggedInUser" (click)="redirectToRegister()">Register</button>
+    <button *ngIf="loggedInUser">Profile</button>
+  </div>
+</div>
+
+<div *ngIf="movieList">
+    <div *ngFor="let movie of movieList">
+        <a [routerLink]="['/movies', movie.id]">
+            <div class="txt">
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.description }}</p>
+                <p>Genre: {{ movie.genre }}</p>
+                <p>Duration: {{ movie.duration }}</p>
+                <p>Rating: {{ movie.rating }}</p>
+                <p>Minimum Age: {{ movie.ageMin }}</p>
+                <p>Tickets: {{ movie.tickets }}</p>
+            </div>
+        </a>
+    </div>
+</div>
