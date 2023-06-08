@@ -19,17 +19,40 @@ export class LoginComponent {
   ) {}
 
   login(): void {
-    this.userService.login(this.email, this.password).subscribe(
-      (response) => {
-        // Login successful
-        this.userService.setLoggedInUser(response); // Assuming the user object is returned directly in the response
-        this.router.navigate(['/home']);
-        alert('Logged in');
+    if (!this.email) {
+      return;
+    }
+
+    if (!this.validateEmail(this.email)) {
+      return;
+    }
+
+    if (!this.password) {
+      return;
+    }
+    const credentials = {
+      email: this.email,
+      password: this.password
+    };
+  
+    this.userService.login(credentials).subscribe(
+      (loggedInUser: User) => {
+        if (loggedInUser) {
+          this.userService.setLoggedInUser(loggedInUser);
+          // this.router.navigate(['/users', loggedInUser.id]);
+          this.router.navigate(['/home']);
+        } else {
+          this.errorMessage = 'Login failed. Please check your email and password.';
+        }
       },
       (error) => {
-        // Login failed
-        this.errorMessage = 'Invalid email or password. Please try again.';
+        console.log('Error logging in:', error);
       }
     );
+  }
+
+  validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 }

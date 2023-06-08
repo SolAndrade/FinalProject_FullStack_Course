@@ -1,26 +1,62 @@
-<h2>Movie Details</h2>
-
-<div class="header">
-    <h1>Welcome to Movie App</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ movie.title }}</title>
+</head>
+<body>
+  <header>
+    <a [routerLink]="['/home']">
+      <h1>Cinematik</h1>
+    </a>
     <div class="user-controls">
-      <button *ngIf="!loggedInUser" (click)="redirectToLogin()">Login</button>
-      <button *ngIf="!loggedInUser" (click)="redirectToRegister()">Register</button>
-      <button *ngIf="loggedInUser">Profile</button>
+      <button class="text-button" *ngIf="!loggedInUser" (click)="redirectToLogin()">Login</button>
+      <button class="text-button" *ngIf="!loggedInUser" (click)="redirectToRegister()">Register</button>
+      <button class="text-button" *ngIf="loggedInUser" (click)="redirectToProfile()">Profile</button>
     </div>
-</div>
+  </header>  
+  <main>
+    <div *ngIf="movie">
+      <div class="movie-details">
+        <div class="img">
+          <img src="{{ movie.imgUrl }}" alt="">
+        </div>
+        <div class="txt-center">
+          <div class="txt-center-title">
+            <h2>{{ movie.title }}</h2>
+          </div>
+          <div class="txt-center-box">
+            <h3>RATING</h3>
+            <p>{{ movie.rating }}</p>
+          </div>
+            <h3>DESCRIPTION</h3>
+            <p>{{ movie.description }}</p>
+        </div>
+        <div class="txt-right">
+          <div class="txt-right-box">
+            <h3>GENRE</h3>
+            <p>{{ movie.genre }}</p>
+          </div>
+          <div class="txt-right-box">
+            <h3>DURATION</h3>
+            <p>{{ movie.duration }} min</p>
+          </div>
+          <div class="txt-right-box">
+            <p>Not recomended for people under {{ movie.ageMin }}</p>
+          </div>
+          <div class="txt-right-box">
+            <button (click)="redirectToBuyTicket()">Buy Ticket</button>
+            <!-- <button [routerLink]="'/new-ticket/' + movie.id">Buy Ticket</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!movie">
+      <p>Loading movie details...</p>
+    </div>
+  </main>
+</body>
+</html>
 
-<div *ngIf="movie">
-  <h3>{{ movie.title }}</h3>
-  <p>Description: {{ movie.description }}</p>
-  <p>Genre: {{ movie.genre }}</p>
-  <p>Duration: {{ movie.duration }}</p>
-  <p>Rating: {{ movie.rating }}</p>
-  <p>Minimum Age: {{ movie.ageMin }}</p>
-  <p>Tickets: {{ movie.tickets }}</p>
-
-  <a [routerLink]="'/new-ticket/' + movie.id">Buy Ticket</a>
-</div>
-
-<div *ngIf="!movie">
-  <p>Loading movie details...</p>
-</div>

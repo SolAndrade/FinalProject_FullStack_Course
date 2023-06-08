@@ -4,6 +4,8 @@ import { Movie } from '../models/movie.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
+import { Ticket } from '../models/ticket.model';
+import { TicketService } from '../services/ticket.service';
 
 
 @Component({
@@ -14,11 +16,13 @@ import { UserService } from '../services/user.service';
 export class MovieItemComponent implements OnInit{
   loggedInUser: User | null = null;
   movie!: any;
+  ticket!: any;
 
   constructor(
     private movieService: MovieService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
+    private ticketService: TicketService,
     private router: Router
   ) {}
 
@@ -42,11 +46,34 @@ export class MovieItemComponent implements OnInit{
       )
     }
   }
+
   redirectToLogin(): void {
-    this.router.navigate(['/login']); // Replace '/login' with the actual route for the login component
+    this.router.navigate(['/login']);
   }
 
   redirectToRegister(): void {
-    this.router.navigate(['/register']); // Replace '/register' with the actual route for the register component
+    this.router.navigate(['/register']); 
+  }
+
+  redirectToProfile(): void {
+    const loggedInUserId = this.loggedInUser!.id;
+    if (loggedInUserId) {
+      this.router.navigate(['/users', loggedInUserId]);
+    }
+    else {
+      alert('error getting the user');
+    }
+  }  
+
+  redirectToBuyTicket(): void {
+    if (!this.loggedInUser) {
+      this.router.navigate(['/login']); 
+    } else {
+      const id = this.activatedRoute.snapshot.params["id"];
+      this.ticket.movie = this.movieService.getMovieById(id);
+      this.ticket.user = this.loggedInUser;
+      this.ticketService.createTicket(this.ticket);
+      // this.router.navigate(['/new-ticket', this.movie.id, this.loggedInUser.id]);
+    }
   }
 }

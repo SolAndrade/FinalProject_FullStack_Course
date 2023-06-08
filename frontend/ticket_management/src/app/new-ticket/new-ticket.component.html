@@ -10,12 +10,10 @@
   <p>Tickets: {{ movie.tickets }}</p>
 </div>
 
-<div>
-  <label for="name">Name:</label>
-  <input type="text" id="name" [(ngModel)]="ticket.user_name">
-
+<form (submit)="onSubmit()">
   <label for="email">Email:</label>
-  <input type="email" id="email" [(ngModel)]="ticket.user_email">
+  <input type="email" id="email" [(ngModel)]="email" required>
 
-  <button (click)="postTicket()">Buy Ticket</button>
-</div>
+  <button type="submit">Create Ticket</button>
+</form>
+

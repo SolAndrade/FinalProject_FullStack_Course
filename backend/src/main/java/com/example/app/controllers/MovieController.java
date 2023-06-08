@@ -3,10 +3,12 @@ package com.example.app.controllers;
 import com.example.app.models.Movie;
 import com.example.app.repositories.MovieRepository;
 import com.example.app.services.MovieService;
+import com.example.app.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,8 @@ public class MovieController {
     private MovieRepository movieRepository;
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private TicketService ticketService;
 
     @PostMapping
     public Movie createMovie(@RequestBody Movie movie) {
@@ -52,6 +56,7 @@ public class MovieController {
             existingMovie.setRating(movie.getRating());
             existingMovie.setAgeMin(movie.getAgeMin());
             existingMovie.setTickets(movie.getTickets());
+            existingMovie.setImgUrl(movie.getImgUrl());
             Movie updatedMovie = movieRepository.save(existingMovie);
             return ResponseEntity.ok(updatedMovie);
         } else {
@@ -69,4 +74,5 @@ public class MovieController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

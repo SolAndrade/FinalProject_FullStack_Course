@@ -1,6 +1,7 @@
 package com.example.app.services;
 
 import com.example.app.models.LoginRequest;
+import com.example.app.models.Movie;
 import com.example.app.models.User;
 import com.example.app.repositories.MovieRepository;
 import com.example.app.repositories.UserRepository;
@@ -10,6 +11,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.crypto.SecretKey;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -17,6 +19,10 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     public boolean validateLogin(LoginRequest loginRequest) {

@@ -6,7 +6,8 @@ export class Movie {
       private _duration: number,
       private _rating: number,
       private _ageMin: number,
-      private _tickets: number
+      private _tickets: number,
+      private _imgUrl: string
     ) {}
 
     public get title(): string {
@@ -56,6 +57,13 @@ export class Movie {
     }
     public set tickets(value: number) {
         this._tickets = value;
+    }
+
+    public get imgUrl(): string {
+        return this._imgUrl;
+    }
+    public set imgUrl(value: string) {
+        this._imgUrl= value;
     }
   }
   

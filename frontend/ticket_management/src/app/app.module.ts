@@ -11,6 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewTicketComponent } from './new-ticket/new-ticket.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminEditMovieComponent } from './admin-edit-movie/admin-edit-movie.component';
+import { AdminAddMovieComponent } from './admin-add-movie/admin-add-movie.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { NewTicketComponent } from './new-ticket/new-ticket.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    NewTicketComponent
+    NewTicketComponent,
+    AdminHomeComponent,
+    AdminEditMovieComponent,
+    AdminAddMovieComponent
   ],
   imports: [
     BrowserModule,

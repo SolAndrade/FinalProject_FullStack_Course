@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   newUser: any = {};
+  errorMessage: string = '';
 
   constructor( 
     private router: Router,
@@ -26,6 +27,7 @@ export class RegisterComponent {
       (error) => {
         console.log('Error creating beer:', error);
         alert('Error creating beer: ' + error.message);
+        this.errorMessage = 'Login failed. Please check your email and password.';
       }
     );
   }

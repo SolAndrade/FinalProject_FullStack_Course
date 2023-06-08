@@ -31,10 +31,13 @@ public class Movie {
     @Column(name = "tickets")
     private Integer tickets;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
     public Movie() {
     }
 
-    public Movie(String title, String description, String genre, Integer duration, Double rating, Integer ageMin, Integer tickets) {
+    public Movie(String title, String description, String genre, Integer duration, Double rating, Integer ageMin, Integer tickets, String imgUrl) {
         this.title = title;
         this.description = description;
         this.genre = genre;
@@ -42,6 +45,7 @@ public class Movie {
         this.rating = rating;
         this.ageMin = ageMin;
         this.tickets = tickets;
+        this.imgUrl = imgUrl;
     }
 
     public Integer getId() {
@@ -107,5 +111,12 @@ public class Movie {
     public void setTickets(Integer tickets) {
         this.tickets = tickets;
     }
-    // Additional methods (if needed)
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 }

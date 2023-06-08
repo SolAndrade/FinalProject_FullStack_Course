@@ -22,9 +22,9 @@ public class User {
     public User() {}
 
     // Parameterized constructor
-    public User(String name, String password, String email) {
+    public User(String name, String email) {
         this.name = name;
-        this.password = password;
+        /*this.password = password;*/
         this.email = email;
     }
 

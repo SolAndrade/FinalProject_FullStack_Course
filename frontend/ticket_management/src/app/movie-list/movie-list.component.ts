@@ -38,10 +38,20 @@ export class MovieListComponent implements OnInit {
   }
 
   redirectToLogin(): void {
-    this.router.navigate(['/login']); // Replace '/login' with the actual route for the login component
+    this.router.navigate(['/login']); 
   }
 
   redirectToRegister(): void {
-    this.router.navigate(['/register']); // Replace '/register' with the actual route for the register component
+    this.router.navigate(['/register']); 
   }
+
+  redirectToProfile(): void {
+    const loggedInUserId = this.loggedInUser!.id;
+    if (loggedInUserId) {
+      this.router.navigate(['/users', loggedInUserId]);
+    }
+    else {
+      alert('error getting the user');
+    }
+  }   
 }

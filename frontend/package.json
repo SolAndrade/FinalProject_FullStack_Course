@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ngx-youtube-player": "^12.0.2"
+  }
+}

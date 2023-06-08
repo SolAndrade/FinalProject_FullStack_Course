@@ -2,6 +2,7 @@ package com.example.app.controllers;
 
 import com.example.app.models.LoginRequest;
 import com.example.app.models.LoginResponse;
+import com.example.app.models.Movie;
 import com.example.app.models.User;
 import com.example.app.repositories.UserRepository;
 import com.example.app.services.UserService;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +25,12 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
+    }
+
+    @GetMapping
+    public List<User> getAllMovies() {
+        List<User> users = userService.getAllUsers();
+        return users;
     }
 
     @GetMapping("/{id}")
