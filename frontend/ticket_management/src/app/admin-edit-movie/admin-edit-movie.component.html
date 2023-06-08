@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ movie.title }}</title>
+</head>
+<body>
+    <header>
+        <a [routerLink]="['/admin']">
+            <h1>Cinematik</h1>
+        </a>
+        <div class="user-controls">
+            <button class="text-button" (click)="addMovie()">Add Movie</button>
+        </div>
+    </header> 
+  <main>
+    <div *ngIf="movie">
+      <div class="movie-details">
+        <div class="img">
+          <img src="{{ movie.imgUrl }}" alt="">
+        </div>
+        <div class="txt-center">
+          <div class="txt-center-title">
+            <h2>{{ movie.title }}</h2>
+            <input type="text" id="title" [(ngModel)]="movie.title" placeholder="New title">
+          </div>
+          <div class="txt-center-box">
+            <h3>RATING</h3>
+            <p>{{ movie.rating }}</p>
+            <input type="number" id="rating" [(ngModel)]="movie.rating" placeholder="New rating">
+          </div>
+            <h3>DESCRIPTION</h3>
+            <p>{{ movie.description }}</p>
+            <input type="text" id="description" [(ngModel)]="movie.description" placeholder="New description">
+        </div>
+        <div class="txt-right">
+          <div class="txt-right-box">
+            <h3>GENRE</h3>
+            <p>{{ movie.genre }}</p>
+            <input type="text" id="genre" [(ngModel)]="movie.genre" placeholder="New genre">
+          </div>
+          <div class="txt-right-box">
+            <h3>DURATION</h3>
+            <p>{{ movie.duration }} min</p>
+            <input type="number" id="duration" [(ngModel)]="movie.duration" placeholder="New duration">
+          </div>
+          <div class="txt-right-box">
+            <p>Not recomended for people under {{ movie.ageMin }}</p>
+            <input type="number" id="ageMin" [(ngModel)]="movie.ageMin" placeholder="New min age">
+          </div>
+          <div class="txt-right-box">
+            <button (click)="editMovie()">Edit Movie</button>
+            <button (click)="deleteMovie()">Delete Movie</button>
+            <!-- <button [routerLink]="'/new-ticket/' + movie.id">Buy Ticket</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!movie">
+      <p>Loading movie details...</p>
+    </div>
+  </main>
+</body>
+</html>
+

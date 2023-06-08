@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+</head>
+<body>
+  <header>
+    <a [routerLink]="['/home']">
+      <h1>Cinematik</h1>
+    </a>
+  </header>
+  <section class="profile">
+    <h2 class="profile-heading">Profile</h2>
+
+    <div *ngIf="user" class="user-details">
+      <p class="user-detail">Hi! {{ user.name }}</p>
+      <p class="user-detail">Email: {{ user.email }}</p>
+    </div>
+  
+    <h3 class="ticket-heading">Your Tickets</h3>
+    <ul class="ticket-list">
+      <li *ngFor="let ticket of tickets" class="ticket-item">
+        <p class="ticket-info">Movie: {{ ticket.movie?.title }}</p>
+        <p class="ticket-info">User Name: {{ ticket.user?.name }}</p>
+        <p class="ticket-info">User Email: {{ ticket.user?.email }}</p>
+      </li>
+    </ul>
+  
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </section>  
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Movie</title>
+</head>
+<body>
+    <header>
+        <a [routerLink]="['/admin']">
+          <h1>Cinematik</h1>
+        </a>
+      </header>
+    <h2>Add New Movie</h2>
+<form (submit)="createMovie()">
+    
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" [(ngModel)]="newMovie.title" placeholder="Enter title" required>
+    </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" [(ngModel)]="newMovie.description" placeholder="Enter description" required>
+  </div>
+
+  <div class="form-group">
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre" [(ngModel)]="newMovie.genre" placeholder="Enter genre" required>
+  </div>
+
+  <div class="form-group">
+    <label for="duration">Duration:</label>
+    <input type="number" id="duration" name="duration" [(ngModel)]="newMovie.duration" placeholder="Enter duration" required>
+  </div>
+
+  <div class="form-group">
+    <label for="rating">Rating:</label>
+    <input type="number" id="rating" name="rating" [(ngModel)]="newMovie.rating" placeholder="Enter rating" required>
+  </div>
+
+  <div class="form-group">
+    <label for="ageMin">Minimum Age:</label>
+    <input type="number" id="ageMin" name="ageMin" [(ngModel)]="newMovie.ageMin" placeholder="Enter min age" required>
+  </div>
+
+  <div class="form-group">
+    <label for="tickets">Tickets:</label>
+    <input type="number" id="tickets" name="tickets" [(ngModel)]="newMovie.tickets" placeholder="Enter tickets" required>
+  </div>
+
+  <div class="form-group">
+    <label for="imgUrl">Image URL:</label>
+    <input type="text" id="imgUrl" name="imgUrl" [(ngModel)]="newMovie.imgUrl" placeholder="Enter imgUrl" required>
+  </div>
+
+  <button type="submit">Create Movie</button>
+</form>
+</body>
+</html>

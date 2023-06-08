@@ -1,0 +1,19 @@
+<h2>Create New Ticket</h2>
+
+<div *ngIf="movie">
+  <h3>{{ movie.title }}</h3>
+  <p>Description: {{ movie.description }}</p>
+  <p>Genre: {{ movie.genre }}</p>
+  <p>Duration: {{ movie.duration }}</p>
+  <p>Rating: {{ movie.rating }}</p>
+  <p>Minimum Age: {{ movie.ageMin }}</p>
+  <p>Tickets: {{ movie.tickets }}</p>
+</div>
+
+<form (submit)="onSubmit()">
+  <label for="email">Email:</label>
+  <input type="email" id="email" [(ngModel)]="email" required>
+
+  <button type="submit">Create Ticket</button>
+</form>
+

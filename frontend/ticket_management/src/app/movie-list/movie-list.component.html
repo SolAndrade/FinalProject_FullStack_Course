@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematik</title>
+</head>
+<body>
+    <header>
+        <a [routerLink]="['/home']">
+            <h1>Cinematik</h1>
+        </a>
+        <div class="user-controls">
+          <button class="text-button" *ngIf="!loggedInUser" (click)="redirectToLogin()">Login</button>
+          <button class="text-button" *ngIf="!loggedInUser" (click)="redirectToRegister()">Register</button>
+          <button class="text-button" *ngIf="loggedInUser" (click)="redirectToProfile()">Profile</button>
+        </div>
+    </header>
+  <main>
+    <section>
+        <div *ngIf="movieList">
+            <div *ngFor="let movie of movieList" class="movie-box">
+                <a [routerLink]="['/movies', movie.id]">
+                    <div class="img">
+                        <img src="{{ movie.imgUrl }}" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+  </main>
+</body>
+</html>
+

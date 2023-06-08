@@ -1,11 +1,14 @@
 package com.example.app.controllers;
 
+import com.example.app.models.Movie;
 import com.example.app.models.Ticket;
 import com.example.app.repositories.TicketRepository;
+import com.example.app.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -14,10 +17,18 @@ public class TicketController {
 
     @Autowired
     private TicketRepository ticketRepository;
+    @Autowired
+    private TicketService ticketService;
 
     @PostMapping
     public Ticket createTicket(@RequestBody Ticket ticket) {
         return ticketRepository.save(ticket);
+    }
+
+    @GetMapping
+    public List<Ticket> getAllTickets() {
+        List<Ticket> tickets = ticketService.getAllTickets();
+        return tickets;
     }
 
     @GetMapping("/{id}")
@@ -37,6 +48,8 @@ public class TicketController {
             Ticket existingTicket = optionalTicket.get();
             existingTicket.setMovie(ticket.getMovie());
             existingTicket.setUser(ticket.getUser());
+            /*existingTicket.setUserName(ticket.getUserName());
+            existingTicket.setUserEmail(ticket.getUserEmail());*/
             // Update other ticket properties as needed
             Ticket updatedTicket = ticketRepository.save(existingTicket);
             return ResponseEntity.ok(updatedTicket);
