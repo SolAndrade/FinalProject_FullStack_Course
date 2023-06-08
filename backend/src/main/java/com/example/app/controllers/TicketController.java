@@ -48,9 +48,6 @@ public class TicketController {
             Ticket existingTicket = optionalTicket.get();
             existingTicket.setMovie(ticket.getMovie());
             existingTicket.setUser(ticket.getUser());
-            /*existingTicket.setUserName(ticket.getUserName());
-            existingTicket.setUserEmail(ticket.getUserEmail());*/
-            // Update other ticket properties as needed
             Ticket updatedTicket = ticketRepository.save(existingTicket);
             return ResponseEntity.ok(updatedTicket);
         } else {
