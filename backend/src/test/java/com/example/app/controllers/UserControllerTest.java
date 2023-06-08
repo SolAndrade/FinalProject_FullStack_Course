@@ -56,7 +56,6 @@ class UserControllerTest {
 
     @Test
     void getAllUsers_validRequest_returnAllUsers() throws Exception {
-        // Create multiple users in the database
         User user1 = new User();
         user1.setName("John Doe");
         user1.setEmail("john.doe@example.com");
@@ -82,7 +81,6 @@ class UserControllerTest {
 
     @Test
     void getUserById_existingId_returnUser() throws Exception {
-        // Create a user in the database
         User user = new User();
         user.setName("John Doe");
         user.setEmail("john.doe@example.com");
@@ -106,7 +104,6 @@ class UserControllerTest {
 
     @Test
     void updateUser_existingId_validUser_userUpdated() throws Exception {
-        // Create a user in the database
         User user = new User();
         user.setName("John Doe");
         user.setEmail("john.doe@example.com");
@@ -148,7 +145,6 @@ class UserControllerTest {
 
     @Test
     void deleteUser_existingId_userDeleted() throws Exception {
-        // Create a user in the database
         User user = new User();
         user.setName("John Doe");
         user.setEmail("john.doe@example.com");

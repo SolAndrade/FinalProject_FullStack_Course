@@ -2,7 +2,6 @@ package com.example.app.controllers;
 
 import com.example.app.models.LoginRequest;
 import com.example.app.models.LoginResponse;
-import com.example.app.models.Movie;
 import com.example.app.models.User;
 import com.example.app.repositories.UserRepository;
 import com.example.app.services.UserService;
@@ -70,13 +69,10 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        // Validate the user's credentials and generate a token or session
 
-        // Assuming you have a UserService with a method to validate the login
         boolean isValidLogin = userService.validateLogin(loginRequest);
 
         if (isValidLogin) {
-            // Generate a token or session and return it in the response
             String token = userService.generateToken(loginRequest);
             return ResponseEntity.ok().body(new LoginResponse(token));
         } else {

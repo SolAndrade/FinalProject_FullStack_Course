@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Service
 public class MovieService {
-    // Assuming you have a movieRepository to access the movie data
     private final MovieRepository movieRepository;
 
     public MovieService(MovieRepository movieRepository) {

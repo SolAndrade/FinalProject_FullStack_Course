@@ -10,13 +10,13 @@ public class UserTest {
 
     @BeforeEach
     public void setUp() {
-        user = new User("Name Lastname", "user@example.com");
+        user = new User("Name Lastname", "user@example.com", "password123");
     }
 
     @Test
     public void testGetters() {
         Assertions.assertEquals("Name Lastname", user.getName());
-        Assertions.assertNull(user.getPassword());
+        Assertions.assertEquals("password123", user.getPassword());
         Assertions.assertEquals("user@example.com", user.getEmail());
     }
 

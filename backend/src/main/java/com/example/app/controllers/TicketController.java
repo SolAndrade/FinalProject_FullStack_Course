@@ -1,6 +1,5 @@
 package com.example.app.controllers;
 
-import com.example.app.models.Movie;
 import com.example.app.models.Ticket;
 import com.example.app.repositories.TicketRepository;
 import com.example.app.services.TicketService;
